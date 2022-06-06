@@ -9,6 +9,7 @@ import { UsuarioNaoVerificadoComponent } from './components/usuario-nao-verifica
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { MaterialModule } from '../shared/material.module';
 import { SharedModule } from '../shared/shared.module';
+import { LoginProvidersComponent } from './components/login-providers/login-providers/login-providers.component';
 
 @NgModule({
   declarations: [
@@ -16,6 +17,7 @@ import { SharedModule } from '../shared/shared.module';
     CadastroComponent,
     RecuperarSenhaComponent,
     UsuarioNaoVerificadoComponent,
+    LoginProvidersComponent,
   ],
   imports: [
     CommonModule,

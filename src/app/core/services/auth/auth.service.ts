@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { Auth, authState } from '@angular/fire/auth';
+import { Auth, authState, FacebookAuthProvider, GithubAuthProvider } from '@angular/fire/auth';
 import { doc, docData, Firestore } from '@angular/fire/firestore';
 import { Router } from '@angular/router';
 import {
@@ -131,6 +131,47 @@ export class AuthService {
       })
     );
   }
+
+  loginFacebook(){
+    return from(signInWithPopup(this.auth, new FacebookAuthProvider())).pipe(
+      tap((result)=>{
+      const credential = FacebookAuthProvider.credentialFromResult(result);
+      const token = credential?.accessToken;
+      const user1= result.user;
+      const userDoc = doc(this.usuarios, user1.uid);
+
+      setDoc(userDoc, {
+        uid: user1.uid,
+        email: user1.email,
+        nome: user1.displayName, 
+        imagem: user1.photoURL,
+        nick: 'Um usuário facebook ',
+      });
+      this.router.navigate(['/']);
+      })
+    )
+  }
+
+  loginGitHub(){
+    return from(signInWithPopup(this.auth, new GithubAuthProvider())).pipe(
+      tap((result)=>{
+      const credential = GithubAuthProvider.credentialFromResult(result);
+      const token = credential?.accessToken;
+      const user= result.user;
+      const userDoc = doc(this.usuarios, user.uid);
+
+      setDoc(userDoc, {
+        uid: user.uid,
+        email: user.email,
+        nome: user.displayName, 
+        imagem: user.photoURL,
+        nick: 'Um usuário do GitHub',
+      });
+      this.router.navigate(['/']);
+      })
+    )
+  }
+
 
   recoverPassword(email: string) {
     // com base no email do parâmetro envia um email para o usuário redefinir/resetar a senha

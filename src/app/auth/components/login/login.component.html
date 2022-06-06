@@ -19,8 +19,8 @@
         <a routerLink="/recuperar-senha">Esqueci minha senha</a>
         <button mat-raised-button color="primary" [disabled]="loginForm.invalid">Login</button>
         <span>ou</span>
-        <button (click)="onLoginGoogle()" type="button" mat-raised-button color="warn">
-            Entrar com o google
+        <button (click)="onClickDialog()" type="button" mat-raised-button color="warn">
+            Entrar com provedores
         </button>
         <app-recaptcha></app-recaptcha>
     </form>
