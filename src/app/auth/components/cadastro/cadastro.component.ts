@@ -14,6 +14,7 @@ import { AuthService } from 'src/app/core/services/auth/auth.service';
   styleUrls: ['./cadastro.component.scss'],
 })
 export class CadastroComponent implements OnInit {
+  hide = true;
   signupForm = this.fb.group(
     {
       nome: ['', [Validators.required]],
