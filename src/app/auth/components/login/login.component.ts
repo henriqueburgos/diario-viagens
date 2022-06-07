@@ -11,6 +11,7 @@ import { LoginProvidersComponent } from '../login-providers/login-providers/logi
   styleUrls: ['./login.component.scss'],
 })
 export class LoginComponent implements OnInit {
+  hide = true;
   loginForm = this.fb.group({
     email: ['', [Validators.required, Validators.email]],
     senha: ['', [Validators.required, Validators.minLength(8)]],

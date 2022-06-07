@@ -42,12 +42,16 @@
     <mat-form-field appearance="fill">
       <mat-label>Senha</mat-label>
       <input
-        matInput
-        placeholder="Sua senha"
-        formControlName="senha"
-        type="password"
-        required
-      />
+      matInput
+      placeholder="Sua senha"
+      formControlName="senha"
+      [type]="hide ? 'password' : 'text'"
+      required
+    />
+    <a mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hide">
+      <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
+    </a>
+    
       <mat-error *ngIf="signupForm.get('senha')?.errors?.['required']"
         >Campo obrigatório</mat-error
       >
@@ -62,7 +66,7 @@
         matInput
         placeholder="Confirmar senha"
         formControlName="confirma_senha"
-        type="password"
+        [type]="hide ?  'password': 'text'"
       />
       <mat-icon matPrefix>key</mat-icon>
     </mat-form-field>
