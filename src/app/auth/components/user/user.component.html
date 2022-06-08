@@ -1,0 +1,45 @@
+
+  <form [formGroup]="updateProfileForm" (ngSubmit)="onSubmit()">
+    <div class="form-container">
+  <div mat-card-avatar *ngIf="infoUser$ | async as user" class="image-example">
+    <img [src]="userPhoto">
+    <input (change)="setImage($event, user)" FormControlName="photoURL" #imagem  type="file" name="imagem" hidden />
+    <mat-icon (click)="imagem.click()">photo_camera</mat-icon>
+  </div>
+
+    <mat-form-field appearance="fill">
+      <mat-label>Email</mat-label>
+      <input type="text" matInput formControlName="email" placeholder="E-mail" required/>
+      <mat-error *ngIf="updateProfileForm.get('email')?.errors?.['required']"
+      >Campo obrigatório</mat-error
+      >
+      <mat-icon matPrefix>mail</mat-icon>
+    </mat-form-field >
+    <mat-form-field appearance="fill">
+      <mat-label>Nome</mat-label>
+      <input type="text" matInput formControlName="nome" placeholder="Nome" required/>
+      <mat-error *ngIf="updateProfileForm.get('nome')?.errors?.['required']"
+      >Campo obrigatório</mat-error
+      >
+      <mat-icon matPrefix>person</mat-icon>
+    </mat-form-field>
+    <mat-form-field appearance="fill">
+      <mat-label>Nick</mat-label>
+      <input type="text" matInput formControlName="nick" placeholder="Nick" required/>
+      <mat-error *ngIf="updateProfileForm.get('nick')?.errors?.['required']"
+      >Campo obrigatório</mat-error
+      >
+      <mat-icon matPrefix>person</mat-icon>
+    </mat-form-field>
+    <button type="submit" class="margin-top" mat-raised-button color="primary" [disabled]="updateProfileForm.invalid">
+      Salvar
+    </button>
+  </div>
+  </form>
+
+
+<ng-template #userAdmin>
+  <div>
+    <h2>Aqui onde vai ficar info apenas para Admin</h2>
+  </div>
+</ng-template>

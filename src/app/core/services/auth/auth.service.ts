@@ -11,7 +11,8 @@ import {
   signInWithPopup,
   User,
 } from '@firebase/auth';
-import { collection, setDoc, updateDoc } from '@firebase/firestore';
+import { addDoc, collection, setDoc, updateDoc } from '@firebase/firestore';
+import { create } from 'domain';
 import { first, from, map, Observable, switchMap, tap } from 'rxjs';
 
 // Firebase Versão Modular
@@ -50,10 +51,16 @@ export class AuthService {
       first(), // recebe apenas a primeira info
       switchMap((user: any) => { // emite um novo obs com base no user
         const userDoc = doc(this.usuarios, user?.uid);
-        return docData(userDoc).pipe(first()); // verifica o documento no banco 
+        return docData(userDoc).pipe(first()); // verifica o documento no banco
       }),
-      map((user) => user['isAdmin'] === true) /* verifica se o user logado possui a propriedade*/
+      map((user) =>
+      user['isAdmin'] === true) /* verifica se o user logado possui a propriedade*/
     );
+  }
+
+  rotaAdmin(router: '/user') {
+    console.log('chegoiu aqui');
+    this.router.navigate([router])
   }
 
   usuarios = collection(this.db, 'usuarios'); // referencia possível coleção
@@ -73,6 +80,7 @@ export class AuthService {
         // OBS: o setDoc remove os dados atuais do documento e seta os novos do objeto do parâmetro
         setDoc(userDoc, {
           uid: user.uid,
+          photoURL: user.photoURL,
           email: email,
           nome: nome,
           nick: nick,
@@ -143,7 +151,7 @@ export class AuthService {
       setDoc(userDoc, {
         uid: user1.uid,
         email: user1.email,
-        nome: user1.displayName, 
+        nome: user1.displayName,
         imagem: user1.photoURL,
         nick: 'Um usuário facebook ',
       });
@@ -163,7 +171,7 @@ export class AuthService {
       setDoc(userDoc, {
         uid: user.uid,
         email: user.email,
-        nome: user.displayName, 
+        nome: user.displayName,
         imagem: user.photoURL,
         nick: 'Um usuário do GitHub',
       });

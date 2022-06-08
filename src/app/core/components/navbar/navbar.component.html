@@ -2,8 +2,10 @@
   <span>
     <a mat-button ><img src="assets/img/diario.png" alt="logo"></a>
   </span>
-  
   <span class="spacer"></span>
+  <div mat-card-avatar (click)="rotaAdmin()" class="example-header-image">
+    <img [src]="userPhoto" alt="">
+  </div>
   <div *ngIf="logged$ | async; else unlogged" class="link-area">
     <a mat-button routerLink="/diarios">Diários</a>
     <button mat-icon-button (click)="logout()">
