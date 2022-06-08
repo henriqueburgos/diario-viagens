@@ -10,6 +10,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { MaterialModule } from '../shared/material.module';
 import { SharedModule } from '../shared/shared.module';
 import { LoginProvidersComponent } from './components/login-providers/login-providers/login-providers.component';
+import { UserComponent } from './components/user/user.component';
 
 @NgModule({
   declarations: [
@@ -18,6 +19,7 @@ import { LoginProvidersComponent } from './components/login-providers/login-prov
     RecuperarSenhaComponent,
     UsuarioNaoVerificadoComponent,
     LoginProvidersComponent,
+    UserComponent,
   ],
   imports: [
     CommonModule,

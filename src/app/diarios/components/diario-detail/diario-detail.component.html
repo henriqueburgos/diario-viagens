@@ -1,6 +1,8 @@
 <div *ngIf="diario$ | async as diario; else loading">
   <mat-card class="example-card">
     <mat-card-header>
+      <div mat-card-avatar>
+      </div>
       <mat-card-title>{{ diario.usuarioName }}</mat-card-title>
       <mat-card-subtitle>{{ diario.usuarioNick }}</mat-card-subtitle>
     </mat-card-header>

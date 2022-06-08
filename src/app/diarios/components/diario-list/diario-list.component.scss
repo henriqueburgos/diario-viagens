@@ -5,7 +5,23 @@
   z-index: 999;
 }
 
-.example-header-image {
+.example-header {
   background-image: url('https://jsl-online.com/wp-content/uploads/2017/01/placeholder-user.png');
+  width: 40px;
   background-size: cover;
+  cursor: pointer;
+}
+
+.img-header img {
+  width: 40px;
+  object-fit: cover;
+  border-radius: 50px;
+  cursor: pointer;
+}
+
+#photoStyleTemp {
+  width: 40px;
+  object-fit: cover;
+  border-radius: 50px;
+  cursor: pointer;
 }
