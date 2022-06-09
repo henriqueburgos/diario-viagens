@@ -5,10 +5,20 @@
   z-index: 999;
 }
 
-.example-header {
+.example-image {
   background-image: url('https://jsl-online.com/wp-content/uploads/2017/01/placeholder-user.png');
   width: 40px;
+  height: 40px;
   background-size: cover;
+  cursor: pointer;
+}
+
+.example-image img {
+  width: 40px;
+  height: auto;
+  object-fit: cover;
+  object-position: center;
+  border-radius: 100%;
   cursor: pointer;
 }
 
@@ -19,9 +29,23 @@
   cursor: pointer;
 }
 
-#photoStyleTemp {
+.photoDiarioStyle {
   width: 40px;
+  max-height: 40px;
   object-fit: cover;
-  border-radius: 50px;
+  object-position: center;
+  border-radius: 100%;
+}
+
+.mat-card-avatar {
+  height: none;
+}
+
+#photoTemp {
+  width: 40px;
+  height: auto;
+  object-fit: cover;
+  object-position: center;
+  border-radius: 100%;
   cursor: pointer;
 }

@@ -3,8 +3,10 @@ import { Auth, authState } from '@angular/fire/auth';
 import {
   doc,
   docData,
+  collection,
   Firestore,
-  updateDoc } from '@angular/fire/firestore';
+  updateDoc,
+  collectionData} from '@angular/fire/firestore';
 import {
     getDownloadURL,
     ref,
@@ -20,12 +22,15 @@ import { InfoUser } from '../../models/infoUser';
 })
 export class UserService {
   currentUser$ = authState(this.auth);
+  usuario!: InfoUser;
   userPhoto!: string;
   constructor(
     private auth: Auth,
     private firestore: Firestore,
     private storage: Storage
   ) {}
+
+  usuarios = collection(this.firestore, 'usuarios');
 
   addImageUser(img: File, path: string) {
     const reference = ref(this.storage, path);
@@ -35,13 +40,16 @@ export class UserService {
     ))
    }
 
+   getUsuarios(): Observable<InfoUser[]> {
+    return collectionData(this.usuarios, { idField: 'id' });
+   }
+
   updateProfileData(profileData: Partial<InfoUser>): Observable<any> {
     const user = this.auth.currentUser;
 
     return of(user).pipe(
       concatMap((user) => {
-        if (!user) throw new Error('Não');
-
+        if (!user) throw new Error('Erro no update');
         return updateProfile(user, profileData);
       })
     );
@@ -61,8 +69,17 @@ export class UserService {
   }
 
   updateUser(user: InfoUser, url: any): Observable<any> {
-    const ref = doc(this.firestore, 'usuarios', user.uid);
+    const ref = doc(this.firestore, 'usuarios', user.uid!);
     return from(updateDoc(ref, {...user, photoURL: url ?? user.photoURL}));
   }
 
+  adicionarAdmin(user: InfoUser): Observable<any> {
+    const ref = doc(this.firestore, 'usuarios', user.uid!);
+    return from(updateDoc(ref,  {...user, isAdmin: user.isAdmin = true}))
+  }
+
+  removerAdmin(user: InfoUser): Observable<any> {
+    const ref = doc(this.firestore, 'usuarios', user.uid!);
+    return from(updateDoc(ref,  {...user, isAdmin: user.isAdmin = false}))
+  }
 }

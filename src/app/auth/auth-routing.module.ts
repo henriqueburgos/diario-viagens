@@ -6,10 +6,12 @@ import { LoginComponent } from './components/login/login.component';
 import { RecuperarSenhaComponent } from './components/recuperar-senha/recuperar-senha.component';
 import { UsuarioNaoVerificadoComponent } from './components/usuario-nao-verificado/usuario-nao-verificado.component';
 import { UserComponent } from './components/user/user.component';
+import { UserAdminComponent } from './components/user-admin/user-admin.component';
 
 
 const redirectLoggedInToDiarios = () => redirectLoggedInTo(['/diarios']);
 const redirectLoggedInToUser = () => redirectUnauthorizedTo(['/user']);
+const redirectLoggedInToUserAdmin = () => redirectUnauthorizedTo(['/user-admin']);
 
 const routes: Routes = [
   {
@@ -35,6 +37,10 @@ const routes: Routes = [
   { path: 'user',
   component: UserComponent,
   ...canActivate(redirectLoggedInToUser),
+  },
+  { path: 'user-admin',
+  component: UserAdminComponent,
+  ...canActivate(redirectLoggedInToUserAdmin),
   }
 ];
 

@@ -1,9 +1,11 @@
 
+
+<div class="container">
   <form [formGroup]="updateProfileForm" (ngSubmit)="onSubmit()">
-    <div class="form-container">
+  <div class="form-container">
   <div mat-card-avatar *ngIf="infoUser$ | async as user" class="image-example">
-    <img [src]="userPhoto">
-    <input (change)="setImage($event, user)" FormControlName="photoURL" #imagem  type="file" name="imagem" hidden />
+    <img [src]="userPhoto" id="photoStyleTemp">
+    <input (change)="setImage($event, user)" FormControlName="photoURL" #imagem type="file" name="imagem" hidden />
     <mat-icon (click)="imagem.click()">photo_camera</mat-icon>
   </div>
 
@@ -36,10 +38,4 @@
     </button>
   </div>
   </form>
-
-
-<ng-template #userAdmin>
-  <div>
-    <h2>Aqui onde vai ficar info apenas para Admin</h2>
-  </div>
-</ng-template>
+</div>

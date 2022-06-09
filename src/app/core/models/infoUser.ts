@@ -1,8 +1,9 @@
 export interface InfoUser {
-  uid: string;
+  uid?: string;
   photoURL?: string;
   displayName?: string;
   email?: string,
   nick?: string,
+  isAdmin?: boolean
 }
 

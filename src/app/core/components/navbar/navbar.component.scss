@@ -2,20 +2,40 @@
   flex: 1 1 auto;
 }
 
+.link-area {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  gap: 5%;
+}
+
 .toolbar {
   background-color:thistle;
 }
 
-img{
-  width: 250px;
+.img-logo{
+  width: 150px;
+  height: auto;
 }
 
-.example-header-image {
-  background-image: url('https://jsl-online.com/wp-content/uploads/2017/01/placeholder-user.png');
-  width: 40px;
-  height: 40px;
-  background-size: cover;
-  overflow: hidden;
+#example-header-image {
+  max-width: 40px;
+  max-height: 40px;
+  border-radius: 100%;
+  object-fit: cover;
+  cursor: pointer;
+}
+
+.ng-star-inserted {
+  max-height: 40px;
+}
+
+.header-image {
+  max-width: 40px;
+  max-height: 40px;
+  object-fit: cover;
+  border-radius: 50px;
   cursor: pointer;
 }
 
@@ -29,11 +49,4 @@ img{
 
 .mat-card-avatar {
   height: none;
-}
-
-#photoStyleTemp {
-  width: 40px;
-  object-fit: cover;
-  border-radius: 50px;
-  cursor: pointer;
 }

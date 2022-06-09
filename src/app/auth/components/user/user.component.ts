@@ -6,16 +6,18 @@ import { HotToastService } from '@ngneat/hot-toast';
 import { FormControl, FormGroup } from '@angular/forms';
 import { concatMap } from 'rxjs';
 import { UploadService } from 'src/app/core/services/upload/upload.service'
+import { InfoUser } from 'src/app/core/models/infoUser';
 
 @Component({
-  selector: 'app-user-admin',
+  selector: 'app-user',
   templateUrl: './user.component.html',
   styleUrls: ['./user.component.scss']
 })
 export class UserComponent implements OnInit {
-  infoUser$ = this.userService.currentUser$;
 
-  adminBoolean!: boolean;
+  infoUser$ = this.userService.currentUser$;
+  usuarios: InfoUser[] = [];
+  isUserAdmin?: boolean;
   user$ = this.authService.uid;
   userPhoto?: any;
 
@@ -55,10 +57,9 @@ export class UserComponent implements OnInit {
   }
 
   changeImageProfile() {
-    let photo = document.querySelector('.image-example');
+    let photo = document.querySelector('img');
       if(this.userPhoto != 'undefined') {
-        photo?.classList.remove('image-example');
-        photo?.classList.add('img-header');
+        photo?.setAttribute('id', 'photoStyleTemp');
       }
 
     console.log(this.userPhoto);
@@ -68,10 +69,6 @@ export class UserComponent implements OnInit {
     this.userService.currentProfile$.pipe().subscribe((user) => {
         this.updateProfileForm.patchValue({ ...user });
       });
-
-    this.authService.isAdmin.subscribe(res => {
-      this.adminBoolean = res;
-    })
   }
 
   onSubmit() {
@@ -85,6 +82,5 @@ export class UserComponent implements OnInit {
     })
     ).subscribe(res => console.log(res)
     )
-
   }
 }

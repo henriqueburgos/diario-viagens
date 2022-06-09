@@ -14,6 +14,7 @@ export class NavbarComponent implements OnInit {
   logged$?: Observable<any>;
   user$?: Observable<Diario[]>
   userPhoto!: any;
+  isAdmin?: boolean;
 
   constructor(
     private authService: AuthService,
@@ -30,10 +31,12 @@ export class NavbarComponent implements OnInit {
   }
 
   changeImageProfile() {
-    let photo = document.querySelector('.example-header-image');
+    let photo = document.querySelector('.photoStyle');
+    let photoTwo = document.querySelector('.example-header-image');
       if(this.userPhoto !== 'undefined') {
-        photo?.classList.remove('example-header-image')
-        photo?.classList.add('img-header');
+        photo?.classList.remove('photoStyle');
+        photoTwo?.classList.remove('example-header-image');
+        photo?.setAttribute('id', 'photoStyleTemp');
       }
   }
 
@@ -41,10 +44,12 @@ export class NavbarComponent implements OnInit {
     this.logged$ = this.authService.logged;
     this.userService.currentProfile$.subscribe(res => {
       this.userPhoto = res?.photoURL
-      // this.changeImageProfile();
-      console.log(typeof(this.userPhoto));
+      this.changeImageProfile();
+      this.authService.isAdmin.subscribe(res => {
+        this.isAdmin = res
+        console.log(this.isAdmin);
+      })
+
     })
-
-
   }
 }
