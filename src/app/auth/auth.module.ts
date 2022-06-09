@@ -11,6 +11,7 @@ import { MaterialModule } from '../shared/material.module';
 import { SharedModule } from '../shared/shared.module';
 import { LoginProvidersComponent } from './components/login-providers/login-providers/login-providers.component';
 import { UserComponent } from './components/user/user.component';
+import { UserAdminComponent } from './components/user-admin/user-admin.component';
 
 @NgModule({
   declarations: [
@@ -20,6 +21,7 @@ import { UserComponent } from './components/user/user.component';
     UsuarioNaoVerificadoComponent,
     LoginProvidersComponent,
     UserComponent,
+    UserAdminComponent,
   ],
   imports: [
     CommonModule,

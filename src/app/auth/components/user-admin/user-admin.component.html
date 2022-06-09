@@ -1,0 +1,29 @@
+<mat-accordion class="example-headers-align" multi>
+  <mat-expansion-panel id="expansion_panel">
+    <mat-expansion-panel-header>
+      <mat-panel-title>
+        Usuário cadastrados
+      </mat-panel-title>
+    </mat-expansion-panel-header>
+
+    <div class="card-container">
+    <mat-card class="example-card" *ngFor="let user of usuarios">
+      <mat-card-header>
+        <div mat-card-avatar class="example-header-image">
+          <img [src]="user.photoURL" alt="" class="img-card">
+        </div>
+        <mat-card-title>{{user.displayName}}</mat-card-title>
+        <mat-card-subtitle>{{user.nick}}</mat-card-subtitle>
+        <mat-card-subtitle>{{user.email}}</mat-card-subtitle>
+      </mat-card-header>
+      <mat-card-content>
+      </mat-card-content>
+      <mat-card-actions id="card_actions">
+        <button color="primary" mat-button (click)="addAdmin(user)">Novo Administrador</button>
+        <button color="primary" mat-button (click)="removerAdmin(user)">Remover Administrador</button>
+      </mat-card-actions>
+    </mat-card>
+  </div>
+  </mat-expansion-panel>
+</mat-accordion>
+

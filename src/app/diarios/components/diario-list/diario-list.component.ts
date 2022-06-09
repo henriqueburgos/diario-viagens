@@ -83,9 +83,13 @@ export class DiarioListComponent implements OnInit {
   }
 
   changeImageProfile() {
-    let photo = document.querySelector('.photo-header');
-      photo?.classList.remove('photo-header');
-      photo?.classList.add('img-header');
+    let photo = document.querySelector('.photoDiarioStyle');
+    let photoTwo = document.querySelector('.example-image');
+      if(this.userPhoto) {
+        photo?.classList.remove('photoDiarioStyle');
+        photoTwo?.classList.remove('example-image');
+        photo?.setAttribute('id', 'photoTemp');
+      }
   }
 
   ngOnInit(): void {

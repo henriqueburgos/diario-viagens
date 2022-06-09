@@ -1,0 +1,96 @@
+.image-example {
+  width: 150px;
+  height: 150px;
+  background-image: url('https://jsl-online.com/wp-content/uploads/2017/01/placeholder-user.png');
+  background-size: cover;
+  border-radius: 100%;
+  margin-bottom: 30px;
+  cursor: pointer;
+}
+
+.img-card {
+  width: 40px;
+  max-height: 40px;
+  border-radius: 100%;
+}
+
+#photoStyleTemp {
+  width: 150px;
+  height: auto;
+  object-fit: cover;
+  border-radius: 100%;
+  cursor: pointer;
+}
+
+.mat-expansion-panel {
+  width: 100%;
+}
+
+.mat-card {
+  margin: none;
+  width: 300px;
+}
+
+#administrador {
+  min-height: 600px;
+}
+
+.card-container {
+  max-width: 100%;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 5%;
+}
+
+.example-action-buttons {
+  padding-bottom: 20px;
+}
+
+#expansion_panel {
+  max-height: auto!important;
+}
+.mat-card-actions {
+  width: 100%;
+  display: flex;
+  justify-content: space-around;
+}
+
+#card_actions {
+  margin: none !important;
+  margin-top: 0;
+  margin-bottom: 0;
+  margin-right: 0;
+  margin-left: 0;
+}
+
+.mat-card-actions button {
+  margin: 0px 0px 0px 0px;
+  padding: 0px 0px 0px 0px;
+  font-size: 14px;
+}
+
+.example-headers-align .mat-expansion-panel-header-title,
+.example-headers-align .mat-expansion-panel-header-description {
+  flex-basis: 0;
+}
+
+.example-headers-align .mat-expansion-panel-header-description {
+  justify-content: space-between;
+  align-items: center;
+}
+
+.example-headers-align .mat-form-field + .mat-form-field {
+  margin-left: 8px;
+}
+
+.example-card {
+  max-width: 400px;
+  margin-bottom: 10px;
+}
+
+.example-header-image {
+  background-image: url('https://jsl-online.com/wp-content/uploads/2017/01/placeholder-user.png');
+  background-size: cover;
+}

@@ -1,12 +1,19 @@
 <mat-toolbar class="toolbar">
   <span>
-    <a mat-button ><img src="assets/img/diario.png" alt="logo"></a>
+    <a mat-button><img src="assets/img/diario.png" alt="logo" class="img-logo"></a>
   </span>
   <span class="spacer"></span>
-  <div mat-card-avatar (click)="rotaAdmin()" class="example-header-image">
-    <img [src]="userPhoto" alt="">
-  </div>
+
   <div *ngIf="logged$ | async; else unlogged" class="link-area">
+    <div *ngIf="userPhoto; else mudaImagem">
+      <img  [src]="userPhoto" (click)="rotaAdmin()" class="header-image">
+    </div>
+    <ng-template #mudaImagem>
+      <img src="https://jsl-online.com/wp-content/uploads/2017/01/placeholder-user.png" id="example-header-image" (click)="rotaAdmin()">
+    </ng-template>
+   <div *ngIf="isAdmin" [routerLink]="['/user-admin']">
+    <a mat-button >Administrar</a>
+   </div>
     <a mat-button routerLink="/diarios">Diários</a>
     <button mat-icon-button (click)="logout()">
       <mat-icon>logout</mat-icon>
