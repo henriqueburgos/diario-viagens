@@ -1,0 +1,39 @@
+.titulo{
+
+   text-align: center;
+   color: blueviolet;
+   
+
+}
+
+.botao{
+    color: blueviolet;
+
+}
+.container{
+    width: 100vw;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+
+}
+.form-container{
+    width: 600px;
+    height: auto;
+    display: flex;
+    justify-content:center;
+    flex-direction: column;
+    align-items:center;
+}
+.btn-container{
+    display: flex;
+    justify-content: center;
+    width: 100%;
+}
+
+.inputEmail{
+    width: 260px;
+    padding-right: 30px;
+}
