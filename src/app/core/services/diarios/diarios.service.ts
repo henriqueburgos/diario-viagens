@@ -74,6 +74,7 @@ export class DiariosService {
               diario.createdAt = new Date();
               diario.imagem = url ?? 'assets/img/placeholder.png';
               diario.usuarioId = this.authService.uid;
+              diario.photoURL = user['photoURL'];
               diario.usuarioNick = user['nick'];
               diario.usuarioName = user['nome'];
 
@@ -87,7 +88,7 @@ export class DiariosService {
   editDiario(diario: Diario, imagem?: File) {
     const diarioDoc = doc(this.diarios, diario.id);
     return this.uploadService
-      .upload(imagem, `diarios/${diario.usuarioId}/`) // tenta realizar upload 
+      .upload(imagem, `diarios/${diario.usuarioId}/`) // tenta realizar upload
       .pipe(
         switchMap((url) => {
           // após a tentativa de upload ele atualiza finalmente o doc

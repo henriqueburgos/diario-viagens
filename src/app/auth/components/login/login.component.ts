@@ -1,7 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, Validators } from '@angular/forms';
+import { MatDialog } from '@angular/material/dialog';
 import { HotToastService } from '@ngneat/hot-toast';
 import { AuthService } from 'src/app/core/services/auth/auth.service';
+import { LoginProvidersComponent } from '../login-providers/login-providers/login-providers.component';
 
 @Component({
   selector: 'app-login',
@@ -9,6 +11,7 @@ import { AuthService } from 'src/app/core/services/auth/auth.service';
   styleUrls: ['./login.component.scss'],
 })
 export class LoginComponent implements OnInit {
+  hide = true;
   loginForm = this.fb.group({
     email: ['', [Validators.required, Validators.email]],
     senha: ['', [Validators.required, Validators.minLength(8)]],
@@ -17,7 +20,8 @@ export class LoginComponent implements OnInit {
   constructor(
     private fb: FormBuilder,
     private authService: AuthService,
-    private toast: HotToastService
+    private toast: HotToastService,
+    private dialog : MatDialog,
   ) {}
 
   onSubmit() {
@@ -34,18 +38,10 @@ export class LoginComponent implements OnInit {
       .subscribe();
   }
 
-  onLoginGoogle() {
-    this.authService
-      .loginGoogle()
-      .pipe(
-        this.toast.observe({
-          success: 'Login efetuado',
-          error: 'Operação cancelada',
-          loading: 'Fazendo login...',
-        })
-      )
-      .subscribe();
-  }
 
-  ngOnInit(): void {}
+  onClickDialog(){
+         this.dialog.open(LoginProvidersComponent);
+    }
+  
+  ngOnInit(): void { }
 }

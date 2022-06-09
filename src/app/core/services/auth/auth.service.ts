@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { Auth, authState } from '@angular/fire/auth';
+import { Auth, authState, FacebookAuthProvider, GithubAuthProvider } from '@angular/fire/auth';
 import { doc, docData, Firestore } from '@angular/fire/firestore';
 import { Router } from '@angular/router';
 import {
@@ -11,7 +11,8 @@ import {
   signInWithPopup,
   User,
 } from '@firebase/auth';
-import { collection, setDoc, updateDoc } from '@firebase/firestore';
+import { addDoc, collection, setDoc, updateDoc } from '@firebase/firestore';
+import { create } from 'domain';
 import { first, from, map, Observable, switchMap, tap } from 'rxjs';
 
 // Firebase Versão Modular
@@ -50,10 +51,16 @@ export class AuthService {
       first(), // recebe apenas a primeira info
       switchMap((user: any) => { // emite um novo obs com base no user
         const userDoc = doc(this.usuarios, user?.uid);
-        return docData(userDoc).pipe(first()); // verifica o documento no banco 
+        return docData(userDoc).pipe(first()); // verifica o documento no banco
       }),
-      map((user) => user['isAdmin'] === true) /* verifica se o user logado possui a propriedade*/
+      map((user) =>
+      user['isAdmin'] === true) /* verifica se o user logado possui a propriedade*/
     );
+  }
+
+  rotaAdmin(router: '/user') {
+    console.log('chegoiu aqui');
+    this.router.navigate([router])
   }
 
   usuarios = collection(this.db, 'usuarios'); // referencia possível coleção
@@ -73,6 +80,7 @@ export class AuthService {
         // OBS: o setDoc remove os dados atuais do documento e seta os novos do objeto do parâmetro
         setDoc(userDoc, {
           uid: user.uid,
+          photoURL: user.photoURL,
           email: email,
           nome: nome,
           nick: nick,
@@ -131,6 +139,47 @@ export class AuthService {
       })
     );
   }
+
+  loginFacebook(){
+    return from(signInWithPopup(this.auth, new FacebookAuthProvider())).pipe(
+      tap((result)=>{
+      const credential = FacebookAuthProvider.credentialFromResult(result);
+      const token = credential?.accessToken;
+      const user1= result.user;
+      const userDoc = doc(this.usuarios, user1.uid);
+
+      setDoc(userDoc, {
+        uid: user1.uid,
+        email: user1.email,
+        nome: user1.displayName,
+        imagem: user1.photoURL,
+        nick: 'Um usuário facebook ',
+      });
+      this.router.navigate(['/']);
+      })
+    )
+  }
+
+  loginGitHub(){
+    return from(signInWithPopup(this.auth, new GithubAuthProvider())).pipe(
+      tap((result)=>{
+      const credential = GithubAuthProvider.credentialFromResult(result);
+      const token = credential?.accessToken;
+      const user= result.user;
+      const userDoc = doc(this.usuarios, user.uid);
+
+      setDoc(userDoc, {
+        uid: user.uid,
+        email: user.email,
+        nome: user.displayName,
+        imagem: user.photoURL,
+        nick: 'Um usuário do GitHub',
+      });
+      this.router.navigate(['/']);
+      })
+    )
+  }
+
 
   recoverPassword(email: string) {
     // com base no email do parâmetro envia um email para o usuário redefinir/resetar a senha

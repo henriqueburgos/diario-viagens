@@ -6,6 +6,7 @@ import { Diario } from 'src/app/core/models/diario';
 import { DiariosService } from 'src/app/core/services/diarios/diarios.service';
 import { DiarioAddComponent } from '../diario-add/diario-add.component';
 import { DiarioEditComponent } from '../diario-edit/diario-edit.component';
+import { UserService } from 'src/app/core/services/user/user.service';
 
 @Component({
   selector: 'app-diario-list',
@@ -15,11 +16,13 @@ import { DiarioEditComponent } from '../diario-edit/diario-edit.component';
 export class DiarioListComponent implements OnInit {
   allDiarios$?: Observable<Diario[]>;
   meusDiarios$?: Observable<Diario[]>;
+  userPhoto!: any;
 
   constructor(
     private dialog: MatDialog,
     private diariosService: DiariosService,
-    private toast: HotToastService
+    private toast: HotToastService,
+    private userService: UserService
   ) {} // Abrir dialogs baseado em componentes existentes
 
   onClickAdd() {
@@ -79,8 +82,19 @@ export class DiarioListComponent implements OnInit {
     }
   }
 
+  changeImageProfile() {
+    let photo = document.querySelector('.photo-header');
+      photo?.classList.remove('photo-header');
+      photo?.classList.add('img-header');
+  }
+
   ngOnInit(): void {
     this.allDiarios$ = this.diariosService.getTodosDiarios();
     this.meusDiarios$ = this.diariosService.getDiariosUsuario();
+
+    this.userService.currentProfile$.subscribe(res => {
+      this.userPhoto = res?.photoURL
+      this.changeImageProfile();
+    })
   }
 }

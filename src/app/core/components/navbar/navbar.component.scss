@@ -1,3 +1,39 @@
 .spacer {
   flex: 1 1 auto;
 }
+
+.toolbar {
+  background-color:thistle;
+}
+
+img{
+  width: 250px;
+}
+
+.example-header-image {
+  background-image: url('https://jsl-online.com/wp-content/uploads/2017/01/placeholder-user.png');
+  width: 40px;
+  height: 40px;
+  background-size: cover;
+  overflow: hidden;
+  cursor: pointer;
+}
+
+.img-header img {
+  width: 40px;
+  height: 40px;
+  object-fit: cover;
+  border-radius: 50px;
+  cursor: pointer;
+}
+
+.mat-card-avatar {
+  height: none;
+}
+
+#photoStyleTemp {
+  width: 40px;
+  object-fit: cover;
+  border-radius: 50px;
+  cursor: pointer;
+}
