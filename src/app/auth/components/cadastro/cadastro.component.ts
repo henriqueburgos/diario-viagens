@@ -1,12 +1,16 @@
 import { Component, OnInit } from '@angular/core';
 import {
   AbstractControl,
+  CheckboxRequiredValidator,
   FormBuilder,
   ValidationErrors,
   Validators,
 } from '@angular/forms';
 import { HotToastService } from '@ngneat/hot-toast';
 import { AuthService } from 'src/app/core/services/auth/auth.service';
+import { TermosDePrivacidadeComponent } from 'src/app/shared/components/termos-de-privacidade/termos-de-privacidade.component';
+import { MatDialog } from '@angular/material/dialog';
+
 
 @Component({
   selector: 'app-cadastro',
@@ -22,6 +26,7 @@ export class CadastroComponent implements OnInit {
       email: ['', [Validators.required, Validators.email]],
       senha: ['', [Validators.required, Validators.minLength(8)]],
       confirma_senha: [''],
+      checkbox: [false, [Validators.requiredTrue]],
     },
     { validators: [this.matchPasswords] }
   );
@@ -35,7 +40,8 @@ export class CadastroComponent implements OnInit {
   constructor(
     private fb: FormBuilder,
     private authService: AuthService,
-    private toast: HotToastService
+    private toast: HotToastService,
+    private dialog: MatDialog
   ) {}
 
   onSubmit() {
@@ -65,5 +71,8 @@ export class CadastroComponent implements OnInit {
       .subscribe();
   }
 
+  onClickDialogTermosDePrivacidade() {
+    this.dialog.open(TermosDePrivacidadeComponent);
+  }
   ngOnInit(): void {}
 }

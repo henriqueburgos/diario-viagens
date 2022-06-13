@@ -21,7 +21,7 @@ export class LoginComponent implements OnInit {
     private fb: FormBuilder,
     private authService: AuthService,
     private toast: HotToastService,
-    private dialog : MatDialog,
+    private dialog: MatDialog,
   ) {}
 
   onSubmit() {
@@ -39,9 +39,9 @@ export class LoginComponent implements OnInit {
   }
 
 
-  onClickDialog(){
-         this.dialog.open(LoginProvidersComponent);
-    }
-  
+  onClickDialogProvedores() {
+    this.dialog.open(LoginProvidersComponent);
+  }
+
   ngOnInit(): void { }
 }

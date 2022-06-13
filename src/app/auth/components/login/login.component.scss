@@ -1,39 +1,37 @@
-.titulo{
-
-   text-align: center;
-   color: blueviolet;
-   
-
-}
-
-.botao{
+.titulo {
+    text-align: center;
     color: blueviolet;
-
 }
-.container{
+
+.botao {
+    color: blueviolet;
+}
+
+.container {
     width: 100vw;
     height: 100%;
     display: flex;
     justify-content: center;
     flex-direction: column;
     align-items: center;
-
 }
-.form-container{
+
+.form-container {
     width: 600px;
     height: auto;
     display: flex;
-    justify-content:center;
+    justify-content: center;
     flex-direction: column;
-    align-items:center;
+    align-items: center;
 }
-.btn-container{
+
+.btn-container {
     display: flex;
     justify-content: center;
     width: 100%;
 }
 
-.inputEmail{
+.inputEmail {
     width: 260px;
     padding-right: 30px;
 }
