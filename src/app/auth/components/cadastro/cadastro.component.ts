@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import {
   AbstractControl,
-  CheckboxRequiredValidator,
   FormBuilder,
   ValidationErrors,
   Validators,
@@ -27,6 +26,7 @@ export class CadastroComponent implements OnInit {
       senha: ['', [Validators.required, Validators.minLength(8)]],
       confirma_senha: [''],
       checkbox: [false, [Validators.requiredTrue]],
+      recaptcha: ['', Validators.required]
     },
     { validators: [this.matchPasswords] }
   );
@@ -43,6 +43,12 @@ export class CadastroComponent implements OnInit {
     private toast: HotToastService,
     private dialog: MatDialog
   ) {}
+
+  public theme: 'light' | 'dark' = 'light';
+  public size: 'compact' | 'normal' = 'normal';
+  public lang = 'pt';
+  public type: 'image' | 'audio' = 'image';
+  public siteKey:string = '6Lexg0ggAAAAABxYoc_oHkpddQ74SqffhRT8NTHo'
 
   onSubmit() {
     const { email, senha, nick, nome } = this.signupForm.value;

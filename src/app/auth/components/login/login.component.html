@@ -26,7 +26,16 @@
                 <mat-icon matPrefix>key</mat-icon>
             </mat-form-field>
 
-            <app-recaptcha formControlName="recaptcha"></app-recaptcha>
+            <div>
+                <ngx-recaptcha2 #captchaElem 
+                [siteKey]="siteKey" 
+                [size]="size" 
+                [hl]="lang"
+                [theme]="theme" 
+                [type]="type" 
+                formControlName="recaptcha">
+                </ngx-recaptcha2>
+            </div>
 
             <div>
                 <button mat-raised-button color="primary" [disabled]="loginForm.invalid">Login do Usuário</button>

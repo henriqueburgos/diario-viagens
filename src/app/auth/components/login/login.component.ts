@@ -16,6 +16,7 @@ export class LoginComponent implements OnInit {
   loginForm = this.fb.group({
     email: ['', [Validators.required, Validators.email]],
     senha: ['', [Validators.required, Validators.minLength(8)]],
+    recaptcha: ['', Validators.required]
   }); 
 
   constructor(
@@ -24,6 +25,12 @@ export class LoginComponent implements OnInit {
     private toast: HotToastService,
     private dialog: MatDialog,  
   ) {}
+
+  public theme: 'light' | 'dark' = 'light';
+  public size: 'compact' | 'normal' = 'normal';
+  public lang = 'pt';
+  public type: 'image' | 'audio' = 'image';
+  public siteKey:string = '6Lexg0ggAAAAABxYoc_oHkpddQ74SqffhRT8NTHo'
 
   onSubmit() {
     const { email, senha } = this.loginForm.value;

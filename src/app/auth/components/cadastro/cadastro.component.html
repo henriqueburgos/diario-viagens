@@ -97,30 +97,31 @@
           </div>
         </mat-step>
 
-        <mat-step>
+        <mat-step [stepControl]="signupForm">
           <ng-template matStepLabel>Termos de Privacidade</ng-template>
-
-          <button mat-stroked-button color="primary" (click)="onClickDialogTermosDePrivacidade()"><strong>Termos de uso</strong></button> <br>
-          <mat-checkbox formControlName="checkbox">Concordo com os Termos de Privacidade. </mat-checkbox>
-
+            <button mat-stroked-button color="primary" (click)="onClickDialogTermosDePrivacidade()"><strong>Termos de Privacidade</strong></button> <br>
+            <mat-checkbox formControlName="checkbox">Concordo com os Termos de Privacidade. </mat-checkbox>
           <div>
             <button mat-button matStepperPrevious>Voltar</button>
             <button mat-button matStepperNext>Proximo</button>
           </div>
         </mat-step>
 
-        <mat-step>
+        <mat-step [stepControl]="signupForm">
           <ng-template matStepLabel>Done</ng-template>
-          <button mat-raised-button color="primary" (click)="onSubmit()" [disabled]="signupForm.invalid">
-            Cadastrar
-          </button>
-          <span>ou</span>
-          <button (click)="onLoginGoogle()" type="button" mat-raised-button color="warn">
-            Entrar com o google
-          </button>
+              <ngx-recaptcha2 #captchaElem 
+              [siteKey]="siteKey" 
+              [size]="size" 
+              [hl]="lang" 
+              [theme]="theme" 
+              [type]="type"
+              formControlName="recaptcha">
+              </ngx-recaptcha2>
+          <button mat-raised-button color="primary" (click)="onSubmit()" [disabled]="signupForm.invalid">Cadastrar</button>
+          <span class="spacer"> Ou entre com </span>
+          <button (click)="onLoginGoogle()" type="button" mat-raised-button color="warn">Entrar com o google</button>
         </mat-step>
       </form>
-  
     </mat-stepper>
   </div>
 </div>
