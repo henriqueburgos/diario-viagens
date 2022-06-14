@@ -9,7 +9,7 @@ export interface Diario {
   imagem?: string; // link da imagem
   // Serão preenchidas programaticamente
   createdAt: Date; // guarda quando o diário foi criado
-  photoURL: string;
+  photoURL?: string;
   usuarioId?: string;
   usuarioNick?: string;
   usuarioName?: string;
