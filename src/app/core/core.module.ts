@@ -3,10 +3,12 @@ import { CommonModule } from '@angular/common';
 import { NavbarComponent } from './components/navbar/navbar.component';
 import { MaterialModule } from '../shared/material.module';
 import { RouterModule } from '@angular/router';
+import { FooterComponent } from './components/footer/footer.component';
 
 @NgModule({
   declarations: [
-    NavbarComponent
+    NavbarComponent,
+    FooterComponent
   ],
   imports: [
     CommonModule,
@@ -14,7 +16,8 @@ import { RouterModule } from '@angular/router';
     RouterModule, // para utilizar o routerLink na navbar
   ],
   exports: [ // são os componentes, pipes e etc que ficam "públicos"
-    NavbarComponent
+    NavbarComponent,
+    FooterComponent
   ],
 })
 export class CoreModule {}

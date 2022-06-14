@@ -1,0 +1,48 @@
+<main>
+  <div class="main-container">
+    <div class="container">
+      <div class="title">
+        <span>O seu diario de viagens</span>
+      </div>
+    </div>
+  </div>
+
+
+  <div class="cards-container">
+    <div class="custom-shape-divider-top-1655144523">
+      <svg data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 120" preserveAspectRatio="none">
+        <path d="M985.66,92.83C906.67,72,823.78,31,743.84,14.19c-82.26-17.34-168.06-16.33-250.45.39-57.84,11.73-114,31.07-172,41.86A600.21,600.21,0,0,1,0,27.35V120H1200V95.8C1132.19,118.92,1055.71,111.31,985.66,92.83Z" class="shape-fill"></path>
+      </svg>
+    </div>
+    <div class="cards">
+   <div class="title-card">
+    <h2>Posts Recentes</h2>
+   </div>
+      <div *ngFor="let diarios of diarios">
+        <mat-card class=" fadeInLeft scrollanimation animated">
+          <img mat-card-image class="bg-pan-bl" [src]="diarios.imagem" alt="Photo of a Shiba Inu">
+          <div class="card-container">
+            <mat-card-content>
+              <p>
+                {{diarios.corpo}}
+              </p>
+            </mat-card-content>
+            <mat-card-actions>
+              <div mat-card-avatar class="example-header-image">
+                <img [src]="diarios.photoURL" alt="">
+              </div>
+              <div class="usuarnames">
+                <mat-card-title>{{diarios.usuarioName}}</mat-card-title>
+                <mat-card-subtitle>{{diarios.usuarioNick}}</mat-card-subtitle>
+              </div>
+            </mat-card-actions>
+            <div class="btn-card">
+              <button mat-stroked-button color="accent">Saiba mais</button>
+            </div>
+          </div>
+        </mat-card>
+      </div>
+    </div>
+  </div>
+</main>
+

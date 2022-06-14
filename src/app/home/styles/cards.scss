@@ -1,0 +1,133 @@
+.title-card{
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
+
+h2 {
+  text-align: center;
+  font-size: 35px;
+  width: 200px;
+  margin-bottom: 30px;
+  font-family: "Lobster", cursive;
+  border-bottom: 1px solid;
+  color: #CE726F;
+  text-shadow: -1px -1px #e1e1e1, -2px -2px #e1e1e1;
+}
+
+.cards {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  flex-direction: row;
+  flex-wrap: wrap;
+  gap: 1%;
+  background-color: #ebb9c0;
+  padding-top: 100px;
+  padding-bottom: 100px;
+}
+
+.example-card {
+  width: 550px;
+  max-height: 200px;
+}
+
+.mat-card {
+  height: 200px;
+  width: 600px;
+  display: flex;
+  gap: 1%;
+  padding: 0;
+  overflow: hidden;
+  margin-bottom: 10px;
+  background: linear-gradient(90deg, #db9fa7 4%, #fff 67%);
+}
+
+.mat-card-image {
+  min-width: 300px;
+  margin: 0;
+  border-bottom-left-radius: inherit;
+  border-top-left-radius: inherit;
+  -webkit-animation: bg-pan-bl 8s both;
+  animation: bg-pan-bl 8s both;
+}
+
+.mat-card-image:first-child {
+  margin-top: -16px;
+}
+
+.card-container {
+  padding: 10px;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.mat-card-actions {
+  display: flex;
+  flex-direction: row;
+  gap: 2%;
+  margin: 0;
+}
+
+.usuarnames {
+  display: flex;
+  flex-direction: column;
+}
+
+.example-header-image {
+  background-image: url('https://jsl-online.com/wp-content/uploads/2017/01/placeholder-user.png');
+  background-size: cover;
+  overflow: hidden;
+  width: 30px;
+  max-height: 30px;
+  margin-top: 5px;
+}
+
+.example-header-image img {
+  width: 30px;
+  height: auto;
+}
+
+.mat-card-title {
+  font-size: 16px;
+  margin-bottom: 5px;
+}
+
+.mat-card-subtitle {
+  font-size: 12px;
+  margin-bottom: 5px;
+}
+
+.mat-card-content {
+  width: 100%;
+  margin: 0;
+}
+
+.mat-card-content p {
+  font-size: 12px;
+}
+
+.card-container button {
+  width: 30px;
+}
+
+.mat-stroked-button.mat-accent {
+  color: #CE726F;
+}
+
+.mat-stroked-button {
+  padding: 0px 90px 0px 20px;
+}
+
+.btn-card {
+  width: 100%;
+  display: flex;
+  margin-bottom: 5px;
+  justify-content: center;
+}
+
+.custom-shape-divider-top-1655144523 {
+  position: relative;
+}
