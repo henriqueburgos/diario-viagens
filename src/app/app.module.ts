@@ -17,9 +17,11 @@ import { AuthService } from './core/services/auth/auth.service';
 
 import { DashboardModule } from './dashboard/dashboard.module';
 import { ServiceWorkerModule } from '@angular/service-worker';
+import { MaterialModule } from './shared/material.module';
+import { HomeComponent } from './home/home.component';
 
 @NgModule({
-  declarations: [AppComponent],
+  declarations: [AppComponent, HomeComponent],
   imports: [
     BrowserModule,
     AppRoutingModule,
@@ -34,6 +36,7 @@ import { ServiceWorkerModule } from '@angular/service-worker';
     HotToastModule.forRoot({
       position: 'bottom-center',
     }),
+    MaterialModule,
     DashboardModule,
     ServiceWorkerModule.register('ngsw-worker.js', {
       enabled: environment.production,
