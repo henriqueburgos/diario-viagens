@@ -15,7 +15,7 @@ export class DiarioDetailComponent implements OnInit {
   userPhoto!: any;
 
   constructor(
-    private route: ActivatedRoute, // guarda informações sobre a rota atual
+    private route: ActivatedRoute, 
     private diariosService: DiariosService,
     private userService: UserService
   ) {}

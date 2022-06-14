@@ -34,9 +34,4 @@ import { UserAdminComponent } from './components/user-admin/user-admin.component
 })
 export class AuthModule {}
 
-/**
- * Agrupar as funcionalidades de autenticação:
- * - Página de login
- * - Página de cadastro
- * - Página de redefinir senha
- */
+

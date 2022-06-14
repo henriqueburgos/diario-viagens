@@ -13,16 +13,13 @@ import { FooterComponent } from './components/footer/footer.component';
   imports: [
     CommonModule,
     MaterialModule,
-    RouterModule, // para utilizar o routerLink na navbar
+    RouterModule, 
   ],
-  exports: [ // são os componentes, pipes e etc que ficam "públicos"
+  exports: [ 
     NavbarComponent,
     FooterComponent
   ],
 })
 export class CoreModule {}
 
-/**
- * Guardas elementos de contexto global como serviços,
- * navbar, models e etc.
- */
+

@@ -31,7 +31,7 @@ import { HomeComponent } from './home/home.component';
     provideStorage(() => getStorage()),
     BrowserAnimationsModule,
     CoreModule,
-    AuthModule, // As rotas em auth agora fazem parte do app
+    AuthModule, 
     DiariosModule,
     HotToastModule.forRoot({
       position: 'bottom-center',
@@ -40,12 +40,11 @@ import { HomeComponent } from './home/home.component';
     DashboardModule,
     ServiceWorkerModule.register('ngsw-worker.js', {
       enabled: environment.production,
-      // Register the ServiceWorker as soon as the application is stable
-      // or after 30 seconds (whichever comes first).
+     
       registrationStrategy: 'registerWhenStable:30000'
     })
   ],
   providers: [AuthService],
-  bootstrap: [AppComponent], // primeiro componente a ser exibido
+  bootstrap: [AppComponent], 
 })
 export class AppModule {}

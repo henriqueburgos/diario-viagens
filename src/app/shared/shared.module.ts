@@ -9,7 +9,7 @@ import { TermosDePrivacidadeComponent } from './components/termos-de-privacidade
 
 @NgModule({
   declarations: [
-    // recursos que fazem parte do módulo (componentes, pipes, diretivas)
+    
     LoaderComponent, RecaptchaComponent, TermosDePrivacidadeComponent
   ],
   imports: [
@@ -27,7 +27,3 @@ import { TermosDePrivacidadeComponent } from './components/termos-de-privacidade
 })
 export class SharedModule {}
 
-/**
- * O uso do shared se destina a armazenar recursos usados com
- * frequência por outras partes da aplicação: pipes, diretivas, componentes
- */
