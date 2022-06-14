@@ -1,0 +1,181 @@
+.titulo-chat {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
+
+.titulo-chat h2 {
+  width: 120px;
+  border-bottom: 1px solid #4279fc;
+  text-align: center;
+}
+
+.chat {
+  width: 400px;
+  height: 500px;
+  overflow-y: auto;
+  overflow-x: hidden;
+}
+
+.chat-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  align-items: center;
+}
+
+.mat-card {
+  width: 100%;
+}
+
+.mat-card-content {
+  width: auto;
+  display: flex;
+  justify-content: flex-start;
+  flex-wrap: wrap;
+  margin-left: 50px;
+  width: 100px;
+  background-color: rgb(225, 236, 236);
+  padding: 5px 5px 5px 15px;
+  border-end-start-radius: 10px;
+  border-bottom-right-radius: 10px;
+  border-top-right-radius: 10px;
+  border-top-left-radius: 2px;
+}
+
+#example-header-image {
+  max-width: 30px;
+  max-height: 30px;
+  border-radius: 100%;
+  object-fit: cover;
+}
+.header-image {
+  max-width: 30px;
+  max-height: 30px;
+  object-fit: cover;
+  border-radius: 50px;
+
+}
+
+.mat-card:not([class*=mat-elevation-z]) {
+  box-shadow: none;
+}
+
+.mat-card-content .mat-card-title {
+  width: 100%;
+  display: flex;
+  justify-content: flex-end;
+  font-size: 10px;
+}
+
+.mat-card-header .mat-card-header-text {
+  margin: 0 5px;
+}
+
+.mat-card-header {
+  width: 100%;
+}
+
+.mat-card-title {
+  font-size: 14px;
+}
+
+.mat-card-header .mat-card-title {
+  margin-bottom: 1px;
+  display: flex;
+  align-items: center;
+  gap: 10%;
+}
+
+.mat-card-content p {
+  font-size: 14px;
+}
+
+.input-mensagem {
+  margin-top: 20px;
+}
+
+#inputMesagem {
+  width: 100%;
+  padding: none;
+  margin-top: 40px;
+}
+
+#inputMesagem mat-form-field {
+  width: 100%;
+}
+
+.mat-form-field-infix .mat-form-field-appearance-legacy {
+  padding: 10px !important;
+}
+
+.mat-form-field-wrapper {
+  width: 100%;
+}
+
+.mensagem {
+  padding-left: 10px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.mensagem .mat-icon {
+  cursor: pointer;
+}
+
+form {
+  width: 100%;
+}
+
+.mat-form-field-appearance-legacy .mat-form-field-infix {
+  padding: none;
+}
+
+.example-header-image {
+  width: 25px;
+  max-height: 25px;
+  background-image: url('https://material.angular.io/assets/img/examples/shiba1.jpg');
+  background-size: cover;
+}
+
+.mat-dialog-container {
+  padding: 10px 10px 0px 10px;
+}
+
+.chat::-webkit-scrollbar-track {
+  -webkit-box-shadow: inset 0 0 6px #0000007b;
+  background-color: #F5F5F5;
+}
+
+.chat::-webkit-scrollbar {
+  width: 3px;
+  background-color: #F5F5F5;
+}
+
+.chat::-webkit-scrollbar-thumb {
+  background-color: #4279fc;
+}
+
+.cdk-overlay-pane {
+  width: 500px;
+}
+
+@media screen and (max-width: 568px) {
+  .chat {
+    width: 300px;
+    height: 400px;
+    overflow-y: auto;
+    overflow-x: hidden;
+  }
+}
+
+@media screen and (max-width: 368px) {
+  .chat {
+    width: 200px;
+    height: 250px;
+    overflow-y: auto;
+    overflow-x: hidden;
+  }
+}
+

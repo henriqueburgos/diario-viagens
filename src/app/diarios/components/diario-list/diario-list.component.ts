@@ -9,6 +9,9 @@ import { DiarioEditComponent } from '../diario-edit/diario-edit.component';
 import { UserService } from 'src/app/core/services/user/user.service';
 import { DiarioDeleteComponent } from '../diario-delete/diario-delete.component';
 import { BreakpointObserver, Breakpoints, BreakpointState } from '@angular/cdk/layout';
+import { ChatGlobalComponent } from 'src/app/chat-global/chat-global.component';
+import { Mensagem } from 'src/app/core/models/Mensagem';
+import { ChatService } from 'src/app/core/services/chat/chat.service';
 
 @Component({
   selector: 'app-diario-list',
@@ -16,9 +19,18 @@ import { BreakpointObserver, Breakpoints, BreakpointState } from '@angular/cdk/l
   styleUrls: ['./diario-list.component.scss',],
 })
 export class DiarioListComponent implements OnInit {
+
+  totalMensagens$?: Observable<number>;
+
   allDiarios$?: Observable<Diario[]>;
   meusDiarios$?: Observable<Diario[]>;
   userPhoto!: any;
+
+  hidden = false;
+
+  toggleBadgeVisibility() {
+    this.hidden = !this.hidden;
+  }
 
   constructor(
     private dialog: MatDialog,
@@ -26,7 +38,8 @@ export class DiarioListComponent implements OnInit {
     private toast: HotToastService,
     private userService: UserService,
     private breakpointObserve: BreakpointObserver,
-  ) {} 
+    private chatService: ChatService,
+  ) {}
 
   responsivo = this.breakpointObserve.observe([
     Breakpoints.XSmall,
@@ -36,22 +49,22 @@ export class DiarioListComponent implements OnInit {
     Breakpoints.XLarge
   ]).pipe(
     map((matches:BreakpointState) => {
-      if (matches.breakpoints[Breakpoints.XSmall]) { 
+      if (matches.breakpoints[Breakpoints.XSmall]) {
         console.log("estou no xsmall")
         return [
-          
+
           { colunas: 2, linhas: 1, },
         ]
       }
-      if (matches.breakpoints[Breakpoints.Small]) { 
+      if (matches.breakpoints[Breakpoints.Small]) {
         console.log("estou no small")
         return [
           { colunas: 2, linhas: 1, },
         ]
       }
-      if (matches.breakpoints[Breakpoints.Medium]) { 
+      if (matches.breakpoints[Breakpoints.Medium]) {
         console.log("estou no medium")
-        return [        
+        return [
           { colunas: 2, linhas: 1, },
         ]
       }
@@ -66,7 +79,7 @@ export class DiarioListComponent implements OnInit {
        const ref = this.dialog.open(DiarioAddComponent, { maxWidth: '512px' });
       ref.afterClosed().subscribe({
       next: (result) => {
-       
+
         if (result) {
           this.diariosService
             .addDiario(result.diario, result.imagem)
@@ -81,6 +94,10 @@ export class DiarioListComponent implements OnInit {
         }
       },
     });
+  }
+
+  openChat() {
+    const ref = this.dialog.open(ChatGlobalComponent, { maxWidth: '512px' });
   }
 
   onClickEdit(diario: Diario) {
@@ -134,5 +151,11 @@ export class DiarioListComponent implements OnInit {
       this.userPhoto = res?.photoURL
       this.changeImageProfile();
     })
+
+    this.totalMensagens$ = this.chatService.getMesagens().pipe(map((res) => {
+     return res.length
+    }))
+
+
   }
 }
