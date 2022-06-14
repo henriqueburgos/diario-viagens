@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { HotToastService } from '@ngneat/hot-toast';
-import { Observable } from 'rxjs';
-import { Diario } from 'src/app/core/models/diario';
+import { Observable, tap } from 'rxjs';
+import { Diario, DiarioConverter } from 'src/app/core/models/diario';
 import { DiariosService } from 'src/app/core/services/diarios/diarios.service';
 import { DiarioAddComponent } from '../diario-add/diario-add.component';
 import { DiarioEditComponent } from '../diario-edit/diario-edit.component';
@@ -17,6 +17,8 @@ export class DiarioListComponent implements OnInit {
   allDiarios$?: Observable<Diario[]>;
   meusDiarios$?: Observable<Diario[]>;
   userPhoto!: any;
+  heart: string = "favorite_border";
+
 
   constructor(
     private dialog: MatDialog,
@@ -24,7 +26,38 @@ export class DiarioListComponent implements OnInit {
     private toast: HotToastService,
     private userService: UserService
   ) {} // Abrir dialogs baseado em componentes existentes
+  diarioheart: string = "favorite_border"
+  like: boolean = false
+  toggleLike(diario: Diario)  {
+   
+    if(diario.heart == "favorite_border") {
+      diario.heart = "favorite";
+      this.adicionarLike(diario)
+    } else {
+      diario.heart = "favorite_border";
+      this.removerLike(diario)
+    }
+  }
 
+  adicionarLike(diario: Diario) {
+    diario.heart = "favorite";
+    this.like=true
+    let diariocert = diario
+    diariocert.qtdLikes +1
+    this.diariosService.adicionarLike(diariocert)
+    .subscribe(has => console.log(has))
+  }
+
+  removerLike(diario: Diario) {
+    diario.heart = "favorite_border";
+    this.like=false
+    let diariocert = diario
+    diariocert.qtdLikes -1
+    this.diariosService.removerLike(diariocert)
+    .subscribe(has => console.log(has))
+  }
+
+  
   onClickAdd() {
     // DiarioAddComponent será mostrado dentro do dialog
     const ref = this.dialog.open(DiarioAddComponent, { maxWidth: '512px' });
@@ -93,9 +126,14 @@ export class DiarioListComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.allDiarios$ = this.diariosService.getTodosDiarios();
-    this.meusDiarios$ = this.diariosService.getDiariosUsuario();
-
+    this.allDiarios$ = this.diariosService.getTodosDiarios().pipe(
+      tap((res)=>{
+        res.map(prop =>{
+          prop.heart = "favorite_border";
+        })
+      })
+    ) 
+    
     this.userService.currentProfile$.subscribe(res => {
       this.userPhoto = res?.photoURL
       this.changeImageProfile();

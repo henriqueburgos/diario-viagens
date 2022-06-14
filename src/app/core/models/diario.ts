@@ -13,6 +13,8 @@ export interface Diario {
   usuarioId?: string;
   usuarioNick?: string;
   usuarioName?: string;
+  qtdLikes: number;
+  heart: string;
 }
 
 export const DiarioConverter: Converter<Diario> = {

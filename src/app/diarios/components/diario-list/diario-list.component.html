@@ -24,6 +24,15 @@
             <a [routerLink]="diario.id" mat-icon-button color="primary">
               <mat-icon>visibility</mat-icon>
             </a>
+            <button *ngIf="!like" (click)="adicionarLike(diario)" mat-icon-button color="warn">
+              <mat-icon>{{diario.heart}}</mat-icon>
+            </button>
+            <button *ngIf="like" (click)="removerLike(diario)" mat-icon-button color="warn">
+              <mat-icon>{{diario.heart}}</mat-icon>
+            </button>
+            <p>
+              {{diario.qtdLikes}}
+            </p>
           </mat-card-actions>
         </mat-card>
       </div>

@@ -77,6 +77,7 @@ export class DiariosService {
               diario.photoURL = user['photoURL'];
               diario.usuarioNick = user['nick'];
               diario.usuarioName = user['nome'];
+              
 
               return from(addDoc(this.diarios, diario)); // (3)
             })
@@ -104,6 +105,16 @@ export class DiariosService {
     const diarioDoc = doc(this.diarios, diario.id);
     // Deleta o documento da coleção a apartir da referência
     return from(deleteDoc(diarioDoc));
+  }
+
+  adicionarLike(diarios: Diario): Observable<any> {
+    const ref = doc(this.db, 'diarios', diarios.id!); 
+    return from(updateDoc(ref,  {...diarios, qtdLikes: diarios.qtdLikes+=1}))
+  }
+
+ removerLike(diarios: Diario): Observable<any> {
+    const ref = doc(this.db, 'diarios', diarios.id!); 
+    return from(updateDoc(ref,  {...diarios, qtdLikes: diarios.qtdLikes-=1}))
   }
 }
 
