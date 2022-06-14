@@ -4,38 +4,37 @@
         <h2 class="titulo"><strong>Seja bem-vindo(a) de volta!</strong></h2>
 
         <form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
+
             <mat-form-field appearance="fill" class="inputEmail">
                 <mat-label>Email</mat-label>
-                <input class="inputEmail" matInput placeholder="Seu email" formControlName="email" required>
+                <input matInput placeholder="Seu email" formControlName="email" required>
                 <mat-error *ngIf="loginForm.get('email')?.errors?.['required']">Campo obrigatório</mat-error>
                 <mat-error *ngIf="loginForm.get('email')?.errors?.['email']">Email inválido</mat-error>
                 <mat-icon matPrefix>person</mat-icon>
             </mat-form-field>
-            <mat-form-field appearance="fill">
-                <mat-label>Senha</mat-label>
 
+            <mat-form-field appearance="fill" class="inputSenha">
+                <mat-label>Senha</mat-label>
                 <input matInput placeholder="Sua senha" formControlName="senha" [type]="hide ? 'password' : 'text'"
                     required>
                 <a mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'"
                     [attr.aria-pressed]="hide">
                     <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
                 </a>
-
                 <mat-error *ngIf="loginForm.get('senha')?.errors?.['required']">Campo obrigatório</mat-error>
                 <mat-error *ngIf="loginForm.get('senha')?.errors?.['minlength']">O mínimo são 8 caracteres</mat-error>
                 <mat-icon matPrefix>key</mat-icon>
             </mat-form-field>
-            <div class="btn-container">
+
+            <app-recaptcha formControlName="recaptcha"></app-recaptcha>
+
+            <div>
                 <button mat-raised-button color="primary" [disabled]="loginForm.invalid">Login do Usuário</button>
-
+                <span class="spacer"></span>
+                <button (click)="onClickDialogProvedores()" type="button" mat-raised-button color="warn">Entrar com provedores</button>
             </div>
-        </form>
-        <span>ou</span>
-        <a routerLink="/recuperar-senha">Esqueci minha senha</a>
-        <button (click)="onClickDialogProvedores()" type="button" mat-raised-button color="warn">
-            Entrar com provedores
-        </button>
-        <app-recaptcha></app-recaptcha>
 
+            <button style="margin-top: 5px;" mat-raised-button color="basic" routerLink="/recuperar-senha">Esqueci minha senha</button>
+        </form>
     </div>
 </div>

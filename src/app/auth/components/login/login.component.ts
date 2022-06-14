@@ -10,18 +10,19 @@ import { LoginProvidersComponent } from '../login-providers/login-providers/logi
   templateUrl: './login.component.html',
   styleUrls: ['./login.component.scss'],
 })
+
 export class LoginComponent implements OnInit {
   hide = true;
   loginForm = this.fb.group({
     email: ['', [Validators.required, Validators.email]],
     senha: ['', [Validators.required, Validators.minLength(8)]],
-  });
+  }); 
 
   constructor(
     private fb: FormBuilder,
     private authService: AuthService,
     private toast: HotToastService,
-    private dialog: MatDialog,
+    private dialog: MatDialog,  
   ) {}
 
   onSubmit() {
@@ -37,8 +38,7 @@ export class LoginComponent implements OnInit {
       )
       .subscribe();
   }
-
-
+  
   onClickDialogProvedores() {
     this.dialog.open(LoginProvidersComponent);
   }
