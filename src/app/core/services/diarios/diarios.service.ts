@@ -74,7 +74,7 @@ export class DiariosService {
               diario.createdAt = new Date();
               diario.imagem = url ?? 'assets/img/placeholder.png';
               diario.usuarioId = this.authService.uid;
-              diario.photoURL = user['photoURL'];
+              diario.photoURL! = user['photoURL'];
               diario.usuarioNick = user['nick'];
               diario.usuarioName = user['nome'];
 

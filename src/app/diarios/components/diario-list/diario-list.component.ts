@@ -7,6 +7,7 @@ import { DiariosService } from 'src/app/core/services/diarios/diarios.service';
 import { DiarioAddComponent } from '../diario-add/diario-add.component';
 import { DiarioEditComponent } from '../diario-edit/diario-edit.component';
 import { UserService } from 'src/app/core/services/user/user.service';
+import { DiarioDeleteComponent } from '../diario-delete/diario-delete.component';
 
 @Component({
   selector: 'app-diario-list',
@@ -73,15 +74,15 @@ export class DiarioListComponent implements OnInit {
   }
 
   onClickDelete(diario: Diario) {
-    const canDelete = confirm('Deseja mesmo deletar?');
-    if (canDelete) {
+    const apagar= this.dialog.open(DiarioDeleteComponent);
+    apagar.afterClosed().subscribe(result => {
+    if ( result) {
       this.diariosService
         .deleteDiario(diario)
         .pipe(this.toast.observe({ success: 'Diário apagado!' }))
         .subscribe();
-    }
+    }})
   }
-
   changeImageProfile() {
     let photo = document.querySelector('.photoDiarioStyle');
     let photoTwo = document.querySelector('.example-image');
