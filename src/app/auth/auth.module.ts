@@ -12,6 +12,7 @@ import { SharedModule } from '../shared/shared.module';
 import { LoginProvidersComponent } from './components/login-providers/login-providers/login-providers.component';
 import { UserComponent } from './components/user/user.component';
 import { UserAdminComponent } from './components/user-admin/user-admin.component';
+import { NgxCaptchaModule } from 'ngx-captcha';
 
 @NgModule({
   declarations: [
@@ -29,7 +30,8 @@ import { UserAdminComponent } from './components/user-admin/user-admin.component
     ReactiveFormsModule,
     MaterialModule,
     FormsModule,
-    SharedModule
+    SharedModule,
+    NgxCaptchaModule
   ],
 })
 export class AuthModule {}
