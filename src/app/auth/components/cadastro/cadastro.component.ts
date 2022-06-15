@@ -14,7 +14,11 @@ import { MatDialog } from '@angular/material/dialog';
 @Component({
   selector: 'app-cadastro',
   templateUrl: './cadastro.component.html',
-  styleUrls: ['./cadastro.component.scss'],
+  styleUrls: [
+    './cadastro.component.scss',
+    './styles/keyframes.scss',
+    './styles/media-queries.scss'
+  ],
 })
 export class CadastroComponent implements OnInit {
   hide = true;

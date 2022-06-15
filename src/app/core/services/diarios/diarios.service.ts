@@ -33,7 +33,7 @@ export class DiariosService {
 
   getTodosDiarios(): Observable<Diario[]> {
 
-    return collectionData(query(this.diarios, orderBy('createdAt', 'desc') ), { idField: 'id' });
+    return collectionData(query(this.diarios, orderBy("createdAt", 'desc') ), { idField: 'id' });
   }
 
   getDiariosUsuario(): Observable<Diario[]> {

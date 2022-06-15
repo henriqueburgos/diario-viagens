@@ -1,19 +1,102 @@
 .container {
-    width: 100%;
-    display: flex;
-    justify-content: center;
-    flex-direction: column;
-    align-items: center;
+  width: 100%;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  align-items: center;
+  overflow-x: hidden;
+  padding-top: 20px;
+  padding-bottom: 20px;
+}
+
+.form-container {
+  display: flex;
+  width: auto;
+  height: auto;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  background-color: rgba(255, 255, 255, 0);
+  border-radius: 20px;
+  box-shadow: 1px 1px 12px 3px #00000097;
+  overflow-y: auto;
+  overflow-x: hidden;
+}
+
+.form-container .title {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+
+.titulo {
+  margin-top: 5px;
+  text-align: center;
+  color: rgba(0, 0, 0, 0.727);
 }
 
 .form-wrapper {
-    height: auto;
-    display: flex;
-    justify-content: center;
-    flex-direction: column;
-    align-items: center;
+  padding-top: 50px;
+  height: auto;
+  width: auto;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  align-items: center;
+  overflow-x: hidden;
 }
 
-mat-form-field {
-    margin-top: 10px;
+.mat-stepper-horizontal,
+.mat-stepper-vertical {
+  background-color: rgba(255, 255, 255, 0);
+}
+
+.mat-step-header .mat-step-icon-selected,
+.mat-step-header .mat-step-icon-state-done,
+.mat-step-header .mat-step-icon-state-edit {
+  color: green;
+}
+
+.mat-button {
+  box-shadow: 1px 1px 4px 3px #00000097;
+  margin-left: 5px;
+  margin-top: 5px;
+}
+
+
+.form-wrapper::-webkit-scrollbar {
+  width: 5px;
+  height: 2px;
+}
+.form-wrapper::-webkit-scrollbar-button {
+  width: 0px;
+  height: 0px;
+}
+.form-wrapper::-webkit-scrollbar-thumb {
+  background: #e1e1e1;
+  border: 6px none #ffffff;
+  border-radius: 50px;
+}
+.form-wrapper::-webkit-scrollbar-thumb:hover {
+  background: #ffffff;
+}
+.form-wrapper::-webkit-scrollbar-thumb:active {
+  background: #000000;
+}
+.form-wrapper::-webkit-scrollbar-track {
+  background: #666666;
+  border: 21px none #ffffff;
+  border-radius: 50px;
+}
+.form-wrapper::-webkit-scrollbar-track:hover {
+  background: #666666;
+}
+.form-wrapper::-webkit-scrollbar-track:active {
+  background: #333333;
+}
+.form-wrapper::-webkit-scrollbar-corner {
+  background: transparent;
 }
