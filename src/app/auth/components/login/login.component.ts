@@ -8,7 +8,11 @@ import { LoginProvidersComponent } from '../login-providers/login-providers/logi
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
-  styleUrls: ['./login.component.scss'],
+  styleUrls: [
+    './login.component.scss',
+    './styles/keyframes.scss',
+    './styles/media-queries.scss'
+  ],
 })
 
 export class LoginComponent implements OnInit {
