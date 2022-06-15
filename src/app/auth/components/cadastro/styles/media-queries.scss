@@ -1,0 +1,33 @@
+@media screen and (max-width: 768px) {
+  .form-container {
+    height: 700px;
+  }
+
+  .form-wrapper {
+    padding-top: 100px;
+  }
+}
+
+@media screen and (max-width: 568px) {
+  .form-container {
+    height: 500px;
+  }
+
+  .form-wrapper {
+    padding-top: 300px;
+  }
+}
+
+@media screen and (max-width: 468px) {
+  .form-container {
+    height: 500px;
+    width: 350px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .form-wrapper {
+    padding-top: 300px;
+  }
+}

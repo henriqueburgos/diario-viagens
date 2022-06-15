@@ -1,7 +1,7 @@
 .fab-wrapper {
   position: fixed;
   bottom: 16px;
-  right: 70px;
+  right: 100px;
   z-index: 999;
 }
 
@@ -13,7 +13,7 @@
   height: 40px;
   position: fixed;
   bottom: 16px;
-  right: 30px;
+  right: 60px;
   z-index: 999;
 }
 
@@ -199,4 +199,12 @@ h2 {
 
 .custom-shape-divider-top-1655144523 {
   position: relative;
+}
+
+.mat-flat-button.mat-primary, .mat-raised-button.mat-primary, .mat-fab.mat-primary, .mat-mini-fab.mat-primar {
+  background: linear-gradient(90deg, #db9fa7 4%, #f9a9a4 67%);
+}
+
+.mat-button.mat-primary, .mat-icon-button.mat-primary, .mat-stroked-button.mat-primary {
+ color: #db9fa7;
 }
