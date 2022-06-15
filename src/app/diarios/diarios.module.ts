@@ -10,7 +10,7 @@ import { DiarioDetailComponent } from './components/diario-detail/diario-detail.
 import { DiarioEditComponent } from './components/diario-edit/diario-edit.component';
 import { DiarioListComponent } from './components/diario-list/diario-list.component';
 import { DiarioDeleteComponent } from './components/diario-delete/diario-delete.component';
-
+import { ChatGlobalComponent } from '../chat-global/chat-global.component';
 
 @NgModule({
   declarations: [
@@ -19,7 +19,8 @@ import { DiarioDeleteComponent } from './components/diario-delete/diario-delete.
     DiarioEditComponent,
     DiarioListComponent,
     DiarioDeleteComponent,
-    
+    ChatGlobalComponent
+
   ],
   imports: [
     CommonModule,

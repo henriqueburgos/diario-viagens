@@ -1,0 +1,39 @@
+<div class="titulo-chat">
+  <h2>Chat Global</h2>
+ </div>
+<div class="chat" *ngIf="allMensages$ | async as mensagens">
+  <div class="chat-container">
+    <mat-card class="example-card" *ngFor="let msg of mensagens">
+      <mat-card-header>
+        <mat-card-title>
+        <div *ngIf="msg.photoURL; else mudaImagem">
+          <img [src]="msg.photoURL" class="header-image">
+        </div>
+        <ng-template #mudaImagem>
+          <img src="https://jsl-online.com/wp-content/uploads/2017/01/placeholder-user.png" id="example-header-image">
+        </ng-template>
+        {{msg.usuarioName}}
+      </mat-card-title>
+      </mat-card-header>
+      <mat-card-content>
+        <p>
+          {{msg.mensagem}}
+        </p>
+        <mat-card-title>{{msg.createAt | date : 'dd/MM/ HH:mm'}}</mat-card-title>
+      </mat-card-content>
+    </mat-card>
+  </div>
+</div>
+
+<div id="inputMesagem">
+  <mat-form-field color="primary">
+    <div class="mensagem">
+      <form [formGroup]="formChat" >
+        <input matInput placeholder="Mensagem" formControlName="mensagem">
+      </form>
+      <button mat-button [disabled]="formChat.invalid" (click)="enviarMensagem()">
+        <mat-icon>send</mat-icon>
+      </button>
+    </div>
+  </mat-form-field>
+</div>

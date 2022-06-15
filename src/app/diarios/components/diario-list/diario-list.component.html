@@ -78,6 +78,15 @@
 </ng-template>
 
 <div class="fab-wrapper">
+  
+  <mat-icon  [matBadge]="totalMensagens$ | async"
+  matBadgeColor="warn"
+  [matBadgeHidden]="hidden"
+  (click)="toggleBadgeVisibility()"
+  (click)="openChat()">forum</mat-icon>
+  </div>
+
+<div class="fab-wrapper">
   <button (click)="onClickAdd()" mat-fab color="primary">
     <mat-icon>add</mat-icon>
   </button>
