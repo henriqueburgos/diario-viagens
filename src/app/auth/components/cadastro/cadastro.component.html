@@ -127,17 +127,27 @@
 
           <mat-step>
             <ng-template matStepLabel>Done</ng-template>
+            <div>
+              <ngx-recaptcha2 #captchaElem 
+              [siteKey]="siteKey" 
+              [size]="size" 
+              [hl]="lang"
+              [theme]="theme" 
+              [type]="type" 
+              formControlName="recaptcha">
+              </ngx-recaptcha2>
+          </div>
             <button mat-raised-button color="primary" (click)="onSubmit()" [disabled]="signupForm.invalid">
               Cadastrar
             </button>
-            <span>ou</span>
-            <button (click)="onLoginGoogle()" type="button" mat-raised-button color="warn">
-              Entrar com o google
-            </button>
-          </mat-step>
+            
+           
+              </mat-step>
         </form>
 
       </mat-stepper>
+      <span>ou</span>
+      <button (click)="onClickDialogProvedores()" type="button" mat-raised-button color="warn">Entrar com provedores</button>
     </div>
   </div>
 

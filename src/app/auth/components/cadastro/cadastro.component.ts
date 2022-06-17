@@ -9,6 +9,7 @@ import { HotToastService } from '@ngneat/hot-toast';
 import { AuthService } from 'src/app/core/services/auth/auth.service';
 import { TermosDePrivacidadeComponent } from 'src/app/shared/components/termos-de-privacidade/termos-de-privacidade.component';
 import { MatDialog } from '@angular/material/dialog';
+import { LoginProvidersComponent } from '../login-providers/login-providers/login-providers.component';
 
 
 @Component({
@@ -21,6 +22,10 @@ import { MatDialog } from '@angular/material/dialog';
   ],
 })
 export class CadastroComponent implements OnInit {
+  onClickDialogProvedores() {
+    this.dialog.open(LoginProvidersComponent);
+  }
+ 
   hide = true;
   signupForm = this.fb.group(
     {
