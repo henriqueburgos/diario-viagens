@@ -18,3 +18,12 @@
   border-radius: 50px;
   cursor: pointer;
 }
+.mat-card-actions {
+  display: flex;
+  flex-direction: row;
+  gap: 2%;
+  margin: 0;
+}
+.iconview {
+  color: #db9fa7;
+   }

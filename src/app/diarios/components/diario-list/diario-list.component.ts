@@ -143,6 +143,10 @@ export class DiarioListComponent implements OnInit {
       }
   }
 
+  onClickView(diario:Diario){
+        this.diariosService.diarioView(diario).subscribe();
+  }
+
   ngOnInit(): void {
     this.allDiarios$ = this.diariosService.getTodosDiarios();
     this.meusDiarios$ = this.diariosService.getDiariosUsuario();
