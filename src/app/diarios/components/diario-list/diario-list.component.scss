@@ -119,6 +119,9 @@ h2 {
   border-top-left-radius: inherit;
   -webkit-animation: bg-pan-bl 8s both;
   animation: bg-pan-bl 8s both;
+  object-fit: cover;
+  height: 25em;
+
 }
 
 .mat-card-image:first-child {

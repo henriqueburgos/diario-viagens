@@ -25,6 +25,7 @@ export class DiarioListComponent implements OnInit {
   allDiarios$?: Observable<Diario[]>;
   meusDiarios$?: Observable<Diario[]>;
   userPhoto!: any;
+favorite:boolean =false;
 
   hidden = false;
 
@@ -145,6 +146,9 @@ export class DiarioListComponent implements OnInit {
 
   onClickView(diario:Diario){
         this.diariosService.diarioView(diario).subscribe();
+  }
+  onClickLike(diario:Diario){
+    this.diariosService.allreadyLike(diario)
   }
 
   ngOnInit(): void {
