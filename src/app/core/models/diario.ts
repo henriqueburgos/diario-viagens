@@ -15,6 +15,9 @@ export interface Diario {
   usuarioNick?: string;
   usuarioName?: string;
   views: number;
+  likes: string[];
+  likesNumber:number;
+  dLikeUid: string;
 }
 
 export const DiarioConverter: Converter<Diario> = {
@@ -27,6 +30,7 @@ export const DiarioConverter: Converter<Diario> = {
       ...obj, 
       data: obj['data']?.toDate(), 
       createdAt: obj['createdAt']?.toDate(),
+      updateAT: obj['updateAT']?.toDate(),
   
    
      } as Diario;

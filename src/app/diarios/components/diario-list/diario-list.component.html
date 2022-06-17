@@ -2,8 +2,9 @@
   <mat-tab-group mat-align-tabs="center">
     <mat-tab label="Todos">
       <div *ngIf="allDiarios$ | async as diarios; else loading">
-        <mat-grid-list *ngFor="let resp of responsivo | async" cols="2" rowHeight="230px" >
-          <mat-grid-tile *ngFor="let diario of diarios" class="example-card" [colspan]="resp.colunas" [rowspan]="resp.linhas">
+        <mat-grid-list *ngFor="let resp of responsivo | async" cols="2" rowHeight="230px">
+          <mat-grid-tile *ngFor="let diario of diarios" class="example-card" [colspan]="resp.colunas"
+            [rowspan]="resp.linhas">
             <mat-card>
               <img mat-card-image class="bg-pan-bl" [src]="diario.imagem" alt="Photo of a Shiba Inu">
               <div class="card-container">
@@ -22,11 +23,18 @@
                   </div>
                 </mat-card-actions>
                 <small>{{ diario.data | date }} | {{ diario.local }}</small>
+                <small>{{ diario.updateAT | date }} </small>
               </div>
               <mat-card-actions>
-                <a [routerLink]="diario.id"  (click)="onClickView(diario)" mat-icon-button color="primary">
-                  <mat-icon  matTooltip={{diario.views}}>visibility</mat-icon>
+                <a [routerLink]="diario.id" (click)="onClickView(diario)" mat-icon-button color="primary">
+                  <mat-icon matTooltip={{diario.views}}>visibility</mat-icon>
                 </a>
+              </mat-card-actions>
+              <mat-card-actions>
+                <mat-button-toggle>
+                  <mat-icon (click)="onClickLike(diario)" matTooltip={{diario.likesNumber}} color="warn">favorite</mat-icon>
+                  <!-- <ng-template #liked><mat-icon (click)="onClickLike(diario)" *ngIf="favorite ; else liked" matTooltip={{diario.likesNumber}} color="warn">favorite</mat-icon></ng-template> -->
+                </mat-button-toggle>
               </mat-card-actions>
             </mat-card>
           </mat-grid-tile>
@@ -36,8 +44,9 @@
 
     <mat-tab label="Meus diários">
       <div *ngIf="meusDiarios$ | async as diarios; else loading">
-      <mat-grid-list *ngFor="let resp of responsivo | async" cols="2" rowHeight="230px" gutterSize="40px">
-          <mat-grid-tile *ngFor="let diario of diarios" class="example-card" [colspan]="resp.colunas" [rowspan]="resp.linhas">
+        <mat-grid-list *ngFor="let resp of responsivo | async" cols="2" rowHeight="230px" gutterSize="40px">
+          <mat-grid-tile *ngFor="let diario of diarios" class="example-card" [colspan]="resp.colunas"
+            [rowspan]="resp.linhas">
             <mat-card>
               <img mat-card-image class="bg-pan-bl" [src]="diario.imagem" alt="Photo of a Shiba Inu">
               <div class="card-container">
@@ -56,7 +65,8 @@
                   </div>
                 </mat-card-actions>
                 <small>{{ diario.data | date }} | {{ diario.local }}</small>
-                <!-- <small>{{diario.updateAT  }}</small> -->
+                <small>{{diario.updateAT | date }}</small>
+                <mat-icon matBadgePosition="below" matBadge={{diario.likesNumber}} matTooltip={{diario.likesNumber}}  matBadgeColor="warn" color="warn">favorite</mat-icon>
               </div>
               <mat-card-actions>
                 <button (click)="onClickEdit(diario)" mat-icon-button color="primary">
@@ -69,7 +79,7 @@
             </mat-card>
           </mat-grid-tile>
         </mat-grid-list>
-     </div>
+      </div>
     </mat-tab>
   </mat-tab-group>
 </div>
@@ -79,13 +89,10 @@
 </ng-template>
 
 <div class="fab-wrapper">
-  
-  <mat-icon  [matBadge]="totalMensagens$ | async"
-  matBadgeColor="warn"
-  [matBadgeHidden]="hidden"
-  (click)="toggleBadgeVisibility()"
-  (click)="openChat()">forum</mat-icon>
-  </div>
+
+  <mat-icon [matBadge]="totalMensagens$ | async" matBadgeColor="warn" [matBadgeHidden]="hidden"
+    (click)="toggleBadgeVisibility()" (click)="openChat()">forum</mat-icon>
+</div>
 
 <div class="fab-wrapper">
   <button (click)="onClickAdd()" mat-fab color="primary">
