@@ -27,6 +27,8 @@ export const DiarioConverter: Converter<Diario> = {
       ...obj, 
       data: obj['data']?.toDate(), 
       createdAt: obj['createdAt']?.toDate(),
-    } as Diario;
+  
+   
+     } as Diario;
   },
 };

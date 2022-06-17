@@ -86,7 +86,7 @@ export class DiariosService {
         switchMap((url) => {
 
           return from(
-            updateDoc(diarioDoc, { ...diario, imagem: url ?? diario.imagem,  })
+            updateDoc(diarioDoc, { ...diario, imagem: url ?? diario.imagem , updateAT: new Date()})
           );
         })
       );
