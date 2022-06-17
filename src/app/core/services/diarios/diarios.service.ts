@@ -69,6 +69,7 @@ export class DiariosService {
               diario.usuarioId = this.authService.uid;
                diario.usuarioNick = user['nick'];
               diario.usuarioName = user['nome'];
+              diario.views = 0
 
               return from(addDoc(this.diarios, diario));
             })
@@ -85,10 +86,18 @@ export class DiariosService {
         switchMap((url) => {
 
           return from(
-            updateDoc(diarioDoc, { ...diario, imagem: url ?? diario.imagem })
+            updateDoc(diarioDoc, { ...diario, imagem: url ?? diario.imagem,  })
           );
         })
       );
+  }
+
+  diarioView(diario:Diario){
+    const diarioDoc = doc(this.diarios, diario.id);
+    diario.views++
+
+    return from(updateDoc(diarioDoc, {...diario, views: diario.views}))
+
   }
 
   deleteDiario(diario: Diario) {

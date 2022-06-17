@@ -12,6 +12,9 @@
       <small>{{ diario.data | date }} | {{ diario.local }}</small>
       <p>{{ diario.corpo }}</p>
     </mat-card-content>
+    <mat-card-actions>
+      <Small> <mat-icon class="iconview" matBadge={{diario.views}} matBadgeColor="warn">visibility</mat-icon>  </Small>
+    </mat-card-actions>
   </mat-card>
 </div>
 

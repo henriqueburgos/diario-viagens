@@ -2,7 +2,7 @@
   <mat-tab-group mat-align-tabs="center">
     <mat-tab label="Todos">
       <div *ngIf="allDiarios$ | async as diarios; else loading">
-        <mat-grid-list *ngFor="let resp of responsivo | async" cols="2" rowHeight="230px" gutterSize="40px">
+        <mat-grid-list *ngFor="let resp of responsivo | async" cols="2" rowHeight="230px" >
           <mat-grid-tile *ngFor="let diario of diarios" class="example-card" [colspan]="resp.colunas" [rowspan]="resp.linhas">
             <mat-card>
               <img mat-card-image class="bg-pan-bl" [src]="diario.imagem" alt="Photo of a Shiba Inu">
@@ -24,8 +24,8 @@
                 <small>{{ diario.data | date }} | {{ diario.local }}</small>
               </div>
               <mat-card-actions>
-                <a [routerLink]="diario.id" mat-icon-button color="primary">
-                  <mat-icon>visibility</mat-icon>
+                <a [routerLink]="diario.id"  (click)="onClickView(diario)" mat-icon-button color="primary">
+                  <mat-icon  matTooltip={{diario.views}}>visibility</mat-icon>
                 </a>
               </mat-card-actions>
             </mat-card>

@@ -9,10 +9,12 @@ export interface Diario {
   imagem?: string; 
   
   createdAt: Date; 
+  updateAT?:Date;
   photoURL?: string;
   usuarioId?: string;
   usuarioNick?: string;
   usuarioName?: string;
+  views: number;
 }
 
 export const DiarioConverter: Converter<Diario> = {
