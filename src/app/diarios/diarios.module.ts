@@ -11,6 +11,7 @@ import { DiarioEditComponent } from './components/diario-edit/diario-edit.compon
 import { DiarioListComponent } from './components/diario-list/diario-list.component';
 import { DiarioDeleteComponent } from './components/diario-delete/diario-delete.component';
 import { ChatGlobalComponent } from '../chat-global/chat-global.component';
+import { NgxPaginationModule } from 'ngx-pagination';
 
 @NgModule({
   declarations: [
@@ -28,7 +29,8 @@ import { ChatGlobalComponent } from '../chat-global/chat-global.component';
     MaterialModule,
     SharedModule,
     FormsModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    NgxPaginationModule
   ]
 })
 export class DiariosModule { }
